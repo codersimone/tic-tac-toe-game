@@ -23,3 +23,10 @@ const gameboard = (function () {
         resetBoard,
     };
 })();
+
+function Player(name, symbol) {
+    return {
+        getName: () => name,
+        getSymbol: () => symbol,
+    };
+}
