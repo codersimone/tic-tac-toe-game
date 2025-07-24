@@ -60,10 +60,8 @@ const gameController = (function () {
         }
 
         if (checkWinner(board)) {
-            console.log(`${currentPlayer.getName()} wins!`);
             gameOver = true;
         } else if (checkDraw(board)) {
-            console.log(`It's a draw!`);
             gameOver = true;
         } else {
             switchPlayer();
@@ -114,11 +112,18 @@ const gameController = (function () {
         gameOver = false;
     }
 
+    function isGameOver() {
+        return gameOver;
+    }
+
     return {
         setPlayers,
         getCurrentPlayer,
         playRound,
         restart,
+        checkWinner,
+        checkDraw,
+        isGameOver,
     };
 })();
 
@@ -142,7 +147,7 @@ const dispayController = (function () {
             boardCell.dataset.index = index;
 
             boardCell.addEventListener('click', () => {
-                if (cell !== '' || isGameOver()) {
+                if (cell !== '' || gameController.isGameOver()) {
                     return;
                 }
                 gameController.playRound(index);
@@ -153,9 +158,17 @@ const dispayController = (function () {
         });
     }
 
-    function isGameOver() {
+    function updateMessage() {
         const board = gameBoard.getBoard();
-        return checkWinner(board) || checkDraw(board);
+        if (gameController.checkWinner(board)) {
+            const winner = gameController.getCurrentPlayer().getName();
+            massageElement.textContent = `${winner} wins!`;
+        } else if (gameController.checkDraw(board)) {
+            massageElement.textContent = `It's a draw!`;
+        } else {
+            const current = gameController.getCurrentPlayer().getName();
+            massageElement.textContent = `The turn of the player ${current}!`;
+        }
     }
 
     renderBoard();
