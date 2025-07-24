@@ -153,5 +153,10 @@ const dispayController = (function () {
         });
     }
 
+    function isGameOver() {
+        const board = gameBoard.getBoard();
+        return checkWinner(board) || checkDraw(board);
+    }
+
     renderBoard();
 })();
