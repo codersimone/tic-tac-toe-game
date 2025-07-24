@@ -121,3 +121,37 @@ const gameController = (function () {
         restart,
     };
 })();
+
+const dispayController = (function () {
+    const boardElement = document.querySelector('.board');
+    const massageElement = document.querySelector('.massage');
+    const startButton = document.querySelector('.start-btn');
+    const restartButton = document.querySelector('.restart-btn');
+    const playerXInput = document.getElementById('x-player-name');
+    const playerOInput = document.getElementById('o-player-name');
+
+    function renderBoard() {
+        const board = gameBoard.getBoard();
+
+        boardElement.innerHTML = '';
+
+        board.forEach((index, cell) => {
+            const boardCell = document.createElement('div');
+            boardCell.classList.add('board-cell');
+            boardCell.textContent = cell;
+            boardCell.dataset.index = index;
+
+            boardCell.addEventListener('click', () => {
+                if (cell !== '' || isGameOver()) {
+                    return;
+                }
+                gameController.playRound(index);
+                renderBoard();
+                updateMessage();
+            });
+            boardElement.appendChild(boardCell);
+        });
+    }
+
+    renderBoard();
+})();
