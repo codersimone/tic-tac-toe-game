@@ -140,7 +140,7 @@ const dispayController = (function () {
 
         boardElement.innerHTML = '';
 
-        board.forEach((index, cell) => {
+        board.forEach((cell, index) => {
             const boardCell = document.createElement('div');
             boardCell.classList.add('board-cell');
             boardCell.textContent = cell;
@@ -170,6 +170,22 @@ const dispayController = (function () {
             massageElement.textContent = `The turn of the player ${current}!`;
         }
     }
+
+    startButton.addEventListener('click', () => {
+        const playerX = playerXInput.value.trim() || 'Player X';
+        const playerO = playerOInput.value.trim() || 'Player O';
+
+        gameController.setPlayers(playerX, playerO);
+        gameController.restart();
+        renderBoard();
+        updateMessage();
+    });
+
+    restartButton.addEventListener('click', () => {
+        gameController.restart();
+        renderBoard();
+        updateMessage();
+    });
 
     renderBoard();
 })();
