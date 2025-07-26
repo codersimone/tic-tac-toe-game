@@ -146,6 +146,12 @@ const dispayController = (function () {
             boardCell.textContent = cell;
             boardCell.dataset.index = index;
 
+            if (cell === 'X') {
+                boardCell.classList.add('x-symbol');
+            } else if (cell === 'O') {
+                boardCell.classList.add('o-symbol');
+            }
+
             boardCell.addEventListener('click', () => {
                 if (cell !== '' || gameController.isGameOver()) {
                     return;
@@ -172,8 +178,8 @@ const dispayController = (function () {
     }
 
     startButton.addEventListener('click', () => {
-        const playerX = playerXInput.value.trim() || 'Player X';
-        const playerO = playerOInput.value.trim() || 'Player O';
+        const playerX = playerXInput.value.trim() || 'X';
+        const playerO = playerOInput.value.trim() || 'O';
 
         gameController.setPlayers(playerX, playerO);
         gameController.restart();
