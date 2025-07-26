@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Reggae+One&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+body,
+html {
+  display: grid;
+  place-items: center;
+  height: 100%;
+  font-family: 'Reggae One', system-ui;
+  background: var(--black);
+  color: var(--clay);
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 600px;
+  padding: 1rem 0.5rem;
+}
+
+.header-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.logo-img {
+  width: 50px;
+  height: 50px;
+  font-size: 0.5rem;
+  object-fit: contain;
+}
+
+.logo-title {
+  font-size: 1.5rem;
+}
+
+.start-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.player {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 300px;
+  margin-bottom: 1rem;
+}
+
+.player input {
+  padding: 0.4rem;
+  margin-top: 0.3rem;
+  background: var(--lemon);
+  color: var(--black);
+  border: none;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  grid-template-rows: repeat(3, 100px);
+  gap: 0.3rem;
+  margin-top: 1rem;
+}
+
+.board-cell {
+  display: grid;
+  place-items: center;
+  font-size: 2rem;
+  background: var(--lemon);
+  cursor: pointer;
+}
+
+.board-cell:hover {
+  background-color: var(--clay);
+}
+
+.x-player-label,
+.x-symbol {
+  color: var(--kiwi);
+}
+
+.o-player-label,
+.o-symbol {
+  color: var(--mauve);
+}
+
+.start-btn, 
+.restart-btn {
+  padding: 0.5rem 1rem;
+  font-size: 1.3rem;
+  color: var(--clay);
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.massage {
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--lemon);
+}
