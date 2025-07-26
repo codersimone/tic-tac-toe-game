@@ -127,7 +127,7 @@ const gameController = (function () {
     };
 })();
 
-const dispayController = (function () {
+const displayController = (function () {
     const boardElement = document.querySelector('.board');
     const massageElement = document.querySelector('.massage');
     const startButton = document.querySelector('.start-btn');
